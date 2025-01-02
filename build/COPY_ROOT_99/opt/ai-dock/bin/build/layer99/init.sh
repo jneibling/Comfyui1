@@ -14,6 +14,12 @@ APT_PACKAGES=(
 PIP_PACKAGES=(
     "opencv-python==4.7.0.72"
 )
+# Execute provisioning script
+if [[ -n "$PROVISIONING_SCRIPT" ]]; then
+    curl -s -O "$PROVISIONING_SCRIPT"
+    chmod +x "$(basename $PROVISIONING_SCRIPT)"
+    ./$(basename $PROVISIONING_SCRIPT)
+fi
 
 NODES=(
     "https://github.com/ltdrdata/ComfyUI-Manager"
